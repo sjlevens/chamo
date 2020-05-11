@@ -16,11 +16,15 @@ const test = () => {
     map((a) => a + 1)
   )(startArray)
 
-  console.log(length(result) === length(testArrayShouldEqual))
-  console.log(
+  const test1 = length(result) === length(testArrayShouldEqual)
+  const test2 =
     reduce((a, b) => a + b, 0, result) ===
-      reduceRight((a, b) => a + b, 0, testArrayShouldEqual)
-  )
-}
+    reduceRight((a, b) => a + b, 0, testArrayShouldEqual)
 
+  if (test1 && test2) {
+    console.log("OK")
+  } else {
+    console.log("ERROR")
+  }
+}
 test()

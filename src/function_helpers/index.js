@@ -1,4 +1,4 @@
 const { feed } = require("./feed")
-const { maybeCurried } = requre("./maybeCurried")
+const { maybeCurried } = require("./maybe-curried")
 
 module.exports = { feed, maybeCurried }

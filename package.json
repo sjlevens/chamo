@@ -4,7 +4,7 @@
   "description": "A simple functional programming library derived from basics",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cd ./tests; node master-test.js"
   },
   "keywords": [
     "functional",
