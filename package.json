@@ -1,0 +1,10 @@
+{
+  "name": "samda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "samda.js",
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
