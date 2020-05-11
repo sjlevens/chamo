@@ -1,6 +1,6 @@
-const feed = require("../function_helpers/feed")
-const listOf = require("../list_helpers/list-of")
+const { feed } = require("../function_helpers/feed")
+const { reduceRight } = require("../list_operations/reduce-right")
 
-const compose = (...fns) => (input) => reduceRight(feed, input, listOf(fns))
+const compose = (...fns) => (input) => reduceRight(feed, input, fns)
 
 exports.compose = compose

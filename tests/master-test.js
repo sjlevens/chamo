@@ -1,6 +1,9 @@
-const compose = require("../src/composition/compose")
-const filter = require("../src/list_operations/filter")
-const map = require("../src/list_operations/map")
+const { compose } = require("../src/composition")
+const { filter } = require("../src/list_operations")
+const { map } = require("../src/list_operations")
+const { reduceRight } = require("../src/list_operations")
+const { reduce } = require("../src/list_operations")
+const { length } = require("../src/list_helpers")
 
 const test = () => {
   const testArrayShouldEqual = [6, 12, 18, 24, 30]
@@ -13,7 +16,11 @@ const test = () => {
     map((a) => a + 1)
   )(startArray)
 
-  console.log(result === testArrayShouldEqual, startArray === startArray)
+  console.log(length(result) === length(testArrayShouldEqual))
+  console.log(
+    reduce((a, b) => a + b, 0, result) ===
+      reduceRight((a, b) => a + b, 0, testArrayShouldEqual)
+  )
 }
 
-exports.test = test
+test()
