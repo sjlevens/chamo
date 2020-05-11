@@ -1,6 +1,6 @@
 {
   "name": "chamo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple functional programming library derived from basics",
   "main": "index.js",
   "scripts": {
