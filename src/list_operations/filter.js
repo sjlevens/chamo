@@ -1,16 +1,17 @@
 const { reduce } = require("./reduce")
-const { append } = require("../list_helpers/append")
+const { concat } = require("../list_helpers/concat")
 const { maybeCurried } = require("../function_helpers/maybe-curried")
+const { initialValueFrom } = require("../helpers")
 
 const filter = maybeCurried(
-  (predicate, array) =>
+  (predicate, iterable) =>
     reduce(
-      (accumulator, currentElement) =>
+      (accumulator, currentElement, key) =>
         predicate(currentElement)
-          ? append(accumulator, currentElement)
+          ? concat(accumulator, currentElement, key)
           : accumulator,
-      [],
-      array
+      initialValueFrom(iterable),
+      iterable
     ),
   2
 )

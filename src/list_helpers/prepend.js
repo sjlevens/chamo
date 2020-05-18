@@ -1,3 +1,3 @@
-const prepend = (array, element) => [element, ...array]
+const prepend = (list, element) => [element, ...list]
 
 exports.prepend = prepend

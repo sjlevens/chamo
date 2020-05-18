@@ -1,14 +1,15 @@
 const { reduce } = require("./reduce")
 const { maybeCurried } = require("../function_helpers/maybe-curried")
-const { append } = require("../list_helpers/append")
+const { concat } = require("../list_helpers/concat")
+const { initialValueFrom } = require("../helpers")
 
 const map = maybeCurried(
-  (mapper, array) =>
+  (mapper, iterable) =>
     reduce(
-      (accumulator, currentElement) =>
-        append(accumulator, mapper(currentElement)),
-      [],
-      array
+      (accumulator, currentElement, key) =>
+        concat(accumulator, mapper(currentElement, key), key),
+      initialValueFrom(iterable),
+      iterable
     ),
   2
 )

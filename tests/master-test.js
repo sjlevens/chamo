@@ -16,12 +16,48 @@ const test = () => {
     map((a) => a + 1)
   )(startArray)
 
-  const test1 = length(result) === length(testArrayShouldEqual)
-  const test2 =
+  const arrayTest1 = length(result) === length(testArrayShouldEqual)
+  const arrayTest2 =
     reduce((a, b) => a + b, 0, result) ===
     reduceRight((a, b) => a + b, 0, testArrayShouldEqual)
 
-  if (test1 && test2) {
+  const resultObj1 = compose(
+    filter((a) => a % 2 === 0),
+    map((a) => a * 3),
+    map((a) => a + 1)
+  )({
+    a: 0,
+    b: 1,
+    c: 2,
+    d: 3,
+    e: 4,
+    f: 5,
+    g: 6,
+    h: 7,
+    i: 8,
+    j: 9,
+  })
+
+  const objTest1 =
+    resultObj1.a === undefined &&
+    resultObj1.b === 6 &&
+    resultObj1.c === undefined &&
+    resultObj1.d === 12 &&
+    resultObj1.e === undefined &&
+    resultObj1.f === 18 &&
+    resultObj1.g === undefined &&
+    resultObj1.h === 24 &&
+    resultObj1.i === undefined &&
+    resultObj1.j === 30
+
+  const stringResult1 = compose(
+    filter((a) => a !== "a"),
+    map((a) => (a === "a" ? a : "x"))
+  )("sam is amazing")
+
+  const stringTest1 = stringResult1 === "xxxxxxxxxxx"
+
+  if (arrayTest1 && arrayTest2 && objTest1 && stringTest1) {
     console.log("OK")
   } else {
     console.log("ERROR")
