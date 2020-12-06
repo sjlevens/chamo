@@ -7,8 +7,10 @@ const reduce = (reducer, initialVal, iterable) => {
     getIterableType(iterable) === "list" ||
     getIterableType(iterable) === "string"
   ) {
+    let idx = 0
     for (let element of iterable) {
-      returnValue = reducer(returnValue, element)
+      returnValue = reducer(returnValue, element, idx)
+      idx++
     }
   } else if (getIterableType(iterable) === "object") {
     for (let key in iterable) {

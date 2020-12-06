@@ -4,7 +4,7 @@ const { map } = require("../src/list_operations")
 const { reduceRight } = require("../src/list_operations")
 const { reduce } = require("../src/list_operations")
 const { length } = require("../src/list_helpers")
-
+const { memo } = require ("../src/function_helpers/memo")
 const test = () => {
   const testArrayShouldEqual = [6, 12, 18, 24, 30]
 
@@ -62,5 +62,15 @@ const test = () => {
   } else {
     console.log("ERROR")
   }
+  
+  // Time Tests
+  console.time('map')
+  map((_, idx) => idx, new Array(10000))
+  console.timeEnd('map')
+
+  console.time('.map')
+  const a__ = new Array(10000)
+  a__.map((_, idx) => idx)
+  console.timeEnd('.map')
 }
 test()

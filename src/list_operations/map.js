@@ -7,7 +7,7 @@ const map = maybeCurried(
   (mapper, iterable) =>
     reduce(
       (accumulator, currentElement, key) =>
-        concat(accumulator, mapper(currentElement, key), key),
+        concat(accumulator, mapper(currentElement, key, iterable), key),
       initialValueFrom(iterable),
       iterable
     ),
