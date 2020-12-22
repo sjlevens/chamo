@@ -5,6 +5,7 @@ const { reduceRight } = require("../src/list_operations")
 const { reduce } = require("../src/list_operations")
 const { length } = require("../src/list_helpers")
 const { memo } = require ("../src/function_helpers/memo")
+
 const test = () => {
   const testArrayShouldEqual = [6, 12, 18, 24, 30]
 

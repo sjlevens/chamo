@@ -7,7 +7,7 @@ const memo = (fn, store = {}) => (...args) => {
 
   store[`${args}`] = fn(...args)
 
-  return fn(...args)
+  return store[`${args}`]
 
 }
 
