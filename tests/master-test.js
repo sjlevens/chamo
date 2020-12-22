@@ -58,10 +58,21 @@ const test = () => {
 
   const stringTest1 = stringResult1 === "xxxxxxxxxxx"
 
+   // Time Tests
+   console.time('map')
+   const a = new Array(10000)
+   map((_, idx) => idx, a)
+   console.timeEnd('map')
+ 
+   console.time('.map')
+   const a__ = new Array(10000)
+   a__.map((_, idx) => idx)
+   console.timeEnd('.map')
+
   if (arrayTest1 && arrayTest2 && objTest1 && stringTest1) {
     console.log("OK")
   } else {
-    console.log("ERROR")
+    console.log("ERROR", arrayTest1, arrayTest2, objTest1, stringTest1)
   }
   
 }
