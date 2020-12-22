@@ -64,14 +64,5 @@ const test = () => {
     console.log("ERROR")
   }
   
-  // Time Tests
-  console.time('map')
-  map((_, idx) => idx, new Array(10000))
-  console.timeEnd('map')
-
-  console.time('.map')
-  const a__ = new Array(10000)
-  a__.map((_, idx) => idx)
-  console.timeEnd('.map')
 }
 test()
