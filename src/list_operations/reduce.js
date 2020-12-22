@@ -1,20 +1,27 @@
 const { getIterableType } = require("../helpers")
 
 const reduce = (reducer, initialVal, iterable) => {
-  var returnValue = initialVal
+  let returnValue = initialVal
 
-  if (
-    getIterableType(iterable) === "list" ||
-    getIterableType(iterable) === "string"
-  ) {
+  if(iterable.forEach) {
+    let idx = 0
+    console.time('reducer')
+    iterable.forEach(element => {
+      returnValue = reducer(returnValue, element, idx)
+      idx++
+    })
+    console.timeEnd('reducer')
+  }
+
+  if (getIterableType(iterable) === "object") {
+    for (const key in iterable) {
+      returnValue = reducer(returnValue, iterable[key], key)
+    }
+  } else {
     let idx = 0
     for (let element of iterable) {
       returnValue = reducer(returnValue, element, idx)
       idx++
-    }
-  } else if (getIterableType(iterable) === "object") {
-    for (let key in iterable) {
-      returnValue = reducer(returnValue, iterable[key], key)
     }
   }
 

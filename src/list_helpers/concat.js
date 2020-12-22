@@ -1,10 +1,18 @@
 const { getIterableType } = require("../helpers")
 
-const concat = (iterable, element, key) =>
-  getIterableType(iterable) === "list"
-    ? [...iterable, element]
-    : getIterableType(iterable) === "string"
-    ? iterable + element
-    : { ...iterable, [key]: element }
+const concat = (iterable, element, key) => {
+  let returnValue = iterable
+
+  if(returnValue.push) {
+    returnValue.push('element')
+    return returnValue
+  }
+
+  getIterableType(iterable) === "string"
+    ? returnValue += element
+    : returnValue[key] = element
+  
+  return returnValue
+}
 
 exports.concat = concat
