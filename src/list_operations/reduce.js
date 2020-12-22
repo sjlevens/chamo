@@ -5,15 +5,11 @@ const reduce = (reducer, initialVal, iterable) => {
 
   if(iterable.forEach) {
     let idx = 0
-    console.time('reducer')
     iterable.forEach(element => {
       returnValue = reducer(returnValue, element, idx)
       idx++
     })
-    console.timeEnd('reducer')
-  }
-
-  if (getIterableType(iterable) === "object") {
+  } else if (getIterableType(iterable) === "object") {
     for (const key in iterable) {
       returnValue = reducer(returnValue, iterable[key], key)
     }

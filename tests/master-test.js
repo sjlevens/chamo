@@ -17,8 +17,6 @@ const test = () => {
     map((a) => a + 1)
   )(startArray)
 
-  console.log(result)
-
   const arrayTest1 = length(result) === length(testArrayShouldEqual)
   const arrayTest2 =
     reduce((a, b) => a + b, 0, result) ===
