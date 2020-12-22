@@ -1,8 +1,6 @@
-const { length } = require("../list_helpers/length")
-
 const maybeCurried = (fn, argLength) => (...args) =>
-  length(args) >= argLength
+  args.length >= argLength
     ? fn(...args)
-    : maybeCurried((wait) => fn(...args, wait), argLength - length(args))
+    : maybeCurried((wait) => fn(...args, wait), argLength - args.length)
 
 exports.maybeCurried = maybeCurried
