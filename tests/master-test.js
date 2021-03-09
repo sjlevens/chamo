@@ -3,6 +3,7 @@ const { filter } = require("../src/list_operations")
 const { map } = require("../src/list_operations")
 const { reduceRight } = require("../src/list_operations")
 const { reduce } = require("../src/list_operations")
+const { reduceRecursive } = require("../src/list_operations/reduce_recursive")
 const { length } = require("../src/list_helpers")
 const { memo } = require ("../src/function_helpers/memo")
 
@@ -60,14 +61,19 @@ const test = () => {
 
    // Time Tests
    console.time('map')
-   const a = new Array(10000)
+   const a = new Array(1000)
    map((_, idx) => idx, a)
    console.timeEnd('map')
  
    console.time('.map')
-   const a__ = new Array(10000)
+   const a__ = new Array(1000)
    a__.map((_, idx) => idx)
    console.timeEnd('.map')
+
+   console.time('reduceRecursive')
+   const b = new Array(1000)
+   reduceRecursive((acc, _, idx) => [...acc, idx], [], b)
+   console.timeEnd('reduceRecursive')
 
   if (arrayTest1 && arrayTest2 && objTest1 && stringTest1) {
     console.log("OK")
